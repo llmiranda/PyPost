@@ -8,6 +8,9 @@ In this project we will do all configuration and code to
 * Download photos 
 * Post the downloaded photos on instagram.
 
+UNTIL NOW
+The project can access the email and save the anex 
+
 ----------------------------------------------------------------------------------------------
 --------------------------------Configuration steps-------------------------------------------
 ----------------------------------------------------------------------------------------------
