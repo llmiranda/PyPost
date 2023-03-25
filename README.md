@@ -20,3 +20,4 @@ In this project we will do all configuration and code to
   - App Passwords
   - Choose others, put the name you want and click Generate
   - Copy the password. We will use it soon.
+    - Very important. DO NOT SHARE this password on internet. If you do, people can access and use your email.
