@@ -9,7 +9,7 @@ In this project we will do all configuration and code to
 * Post the downloaded photos on instagram.
 
 UNTIL NOW
-The project can access the email and save the anex 
+The project can access the email, save the anex and move anex to a specif path
 
 ----------------------------------------------------------------------------------------------
 --------------------------------Configuration steps-------------------------------------------
