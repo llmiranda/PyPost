@@ -5,14 +5,24 @@ import os
 # user and password to access the email. The password is the same gmail generate for us in first Configuration Step
 user = sensitive_data.email
 password = sensitive_data.password
-directory = "C:/tmp/images/"
+directory = "C:/tmp/pypath/images/"
 
-"""def create_path(directory):
+def create_path(directory):
     if not os.path.exists(directory):
-        os.mkdir(directory)
-    #
-    os.chdir(directory)
-    print(os.getcwd())"""
+        path = directory.split("/")
+        dir = ""
+        for folder in path:
+            dir = dir + folder + '/'
+            if not os.path.exists(dir):
+                os.mkdir(dir)        
+
+def transf_image():
+    create_path(directory)
+    for file in os.listdir():
+        #or ".jpeg" or ".png"
+        if ".jpg" in file.lower():
+            print(file)
+            os.rename(file, directory + file)
 
 def readMail():
     with MailBox('imap.gmail.com').login(user, password) as myMailBox:
@@ -20,13 +30,7 @@ def readMail():
             if len(mail.attachments) > 0:
                 for attach in mail.attachments:
                     with open(attach.filename, 'wb') as image:
-                        #create_path(directory)
                         image.write(attach.payload)
+                        image.close
 
-
-            """print(f"From: {mail.from_}")
-            print(f"Attachment: {mail.attachments}")
-            print(f"Date: {mail.date}")
-            print(f"Subject: {mail.subject}")
-            print(f"Text: {mail.text}")"""
-            #print(mail.from_, mail.attachments, mail.date, mail.subject, len(mail.text or mail.html))
+            return mail.subject, mail.text
