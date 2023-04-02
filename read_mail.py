@@ -19,12 +19,10 @@ def create_path(directory):
 def transf_image():
     create_path(directory)
     for file in os.listdir():
-        #or ".jpeg" or ".png"
-        print(file.split(".")[-1])
         if file.split(".")[-1] in ("jpg" or "jpeg" or "png"):
-            print(file)
             os.rename(file, directory + file)
 
+#when finish, need delete mail
 def readMail():
     with MailBox('imap.gmail.com').login(user, password) as myMailBox:
         for mail in myMailBox.fetch():
