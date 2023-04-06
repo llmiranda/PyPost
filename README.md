@@ -6,10 +6,11 @@ The idea is automate a task wich my wife takes one hour every day to do it manua
 In this project we will do all configuration and code to
 * Check an email address
 * Download photos 
+* Look for Instagram of someone in a Google Sheet
 * Post the downloaded photos on instagram.
 
 UNTIL NOW
-The project can access the email, save the anex and move anex to a specif path
+The project can access the email, save the anex, move anex to a specif path and find the instragam of that person.
 
 ----------------------------------------------------------------------------------------------
 --------------------------------Configuration steps-------------------------------------------
@@ -46,3 +47,4 @@ The project can access the email, save the anex and move anex to a specif path
 ----------------------------------------------------------------------------------------------
 imap_tools
 os
+googlesheets api (pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib) -- https://developers.google.com/sheets/api/quickstart/python?hl=pt-br
