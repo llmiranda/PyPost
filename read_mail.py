@@ -1,11 +1,17 @@
-import sensitive_data
 from imap_tools import MailBox, AND
 import os
+from random import randint
+from time import sleep
+
+import sensitive_data
+import get_instagram_user
+import pypost
 
 # user and password to access the email. The password is the same gmail generate for us in first Configuration Step
 user = sensitive_data.email
 password = sensitive_data.password
 directory = "C:/tmp/pypath/images/"
+instagram_user = ""
 
 def create_path(directory):
     if not os.path.exists(directory):
@@ -22,7 +28,6 @@ def transf_image():
         if file.split(".")[-1] in ("jpg" or "jpeg" or "png"):
             os.rename(file, directory + file)
 
-#when finish, need delete mail
 def readMail():
     with MailBox('imap.gmail.com').login(user, password) as myMailBox:
         for mail in myMailBox.fetch():
@@ -32,4 +37,8 @@ def readMail():
                         image.write(attach.payload)
                         image.close
 
-            return mail.subject, mail.text
+            transf_image()
+            instagram_user = get_instagram_user.main(mail.subject.lower())
+            pypost.main(instagram_user, mail.text)
+            myMailBox.delete(myMailBox.uids(AND(seen=True)))
+            sleep(randint(30,300))

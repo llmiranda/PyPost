@@ -42,7 +42,7 @@ def main(user):
         values = result.get('values', [])
 
         for sublist in values:
-            if sublist[0] == user:
+            if sublist[0].lower() == user:
                 return sublist[1]
 
     except HttpError as err:

@@ -48,3 +48,5 @@ The project can access the email, save the anex, move anex to a specif path and 
 imap_tools
 os
 googlesheets api (pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib) -- https://developers.google.com/sheets/api/quickstart/python?hl=pt-br
+instagrapi
+Pillow
