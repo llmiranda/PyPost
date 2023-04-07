@@ -10,7 +10,7 @@ In this project we will do all configuration and code to
 * Post the downloaded photos on instagram.
 
 UNTIL NOW
-The project can access the email, save the anex, move anex to a specif path and find the instragam of that person.
+The project can access the email, save the anex, move anex to a specif path, find the instagram profile from a Google Sheet, post the photo, delete the image and delete the email.
 
 ----------------------------------------------------------------------------------------------
 --------------------------------Configuration steps-------------------------------------------
