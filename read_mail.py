@@ -25,7 +25,7 @@ def create_path(directory):
 def transf_image():
     create_path(directory)
     for file in os.listdir():
-        if file.split(".")[-1] in ("jpg" or "jpeg" or "png"):
+        if file.split(".")[-1] in ("jpg", "jpeg", "png"):
             os.rename(file, directory + file)
 
 def readMail():
