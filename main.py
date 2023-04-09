@@ -1,3 +1,5 @@
 import read_mail
+import pypost
 
-read_mail.readMail()
+cl = pypost.loggin_user()
+read_mail.readMail(cl)

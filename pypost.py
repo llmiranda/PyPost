@@ -2,6 +2,7 @@ from instagrapi import Client
 import logging
 import os
 import sensitive_data
+import image_rotate
 
 directory = "C:/tmp/pypath/images/"
 
@@ -9,6 +10,7 @@ logger = logging.getLogger()
 
 def loggin_user():
     cl = Client()
+    cl.delay_range = [1, 3]
     session = cl.load_settings("session.json")
 
     login_via_session = False
@@ -16,11 +18,10 @@ def loggin_user():
 
     if session:
         try:
-            cl.delay_range = [1, 3]
             cl.set_settings(session)
             cl.login(sensitive_data.instagram_user, sensitive_data.instagram_pass)
 
-            #check if session is valido
+            #check if session is valid
             try:
                 cl.get_timeline_feed()
             except:
@@ -33,6 +34,7 @@ def loggin_user():
                 cl.set_uuids(old_session["uuids"])
 
                 cl.login(sensitive_data.instagram_user, sensitive_data.instagram_pass)
+                cl.dump_settings("session.json")
             
             login_via_session = True
         except Exception as e:
@@ -51,10 +53,11 @@ def loggin_user():
 
     return cl
 
-def main (taged, text):
-    cl = loggin_user()
+def main (taged, text, client):
     for file in os.listdir(directory):
         #
-        media = cl.photo_upload(directory + file, '@' + str(taged) + "\n" + str(text))
+        image_rotate.rotate(directory + file)
+        #
+        media = client.photo_upload(directory + file, '@' + str(taged) + "\n" + str(text))
         os.remove(directory + file)
         

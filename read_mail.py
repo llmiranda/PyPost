@@ -1,7 +1,7 @@
 from imap_tools import MailBox, AND
 import os
-from random import randint
-from time import sleep
+#from random import randint
+#from time import sleep
 
 import sensitive_data
 import get_instagram_user
@@ -28,7 +28,7 @@ def transf_image():
         if file.split(".")[-1] in ("jpg", "jpeg", "png"): 
             os.rename(file, directory + file)
 
-def readMail():
+def readMail(client):
     with MailBox('imap.gmail.com').login(user, password) as myMailBox:
         for mail in myMailBox.fetch():
             if len(mail.attachments) > 0:
@@ -39,6 +39,5 @@ def readMail():
 
             transf_image()
             instagram_user = get_instagram_user.main(mail.subject.lower())
-            pypost.main(instagram_user, mail.text)
+            pypost.main(instagram_user, mail.text, client)
             myMailBox.delete(myMailBox.uids(AND(seen=True)))
-            sleep(randint(30,300))
