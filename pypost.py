@@ -11,7 +11,14 @@ logger = logging.getLogger()
 def loggin_user():
     cl = Client()
     cl.delay_range = [1, 3]
-    session = cl.load_settings("session.json")
+    
+    try:
+        session = cl.load_settings("session.json")
+    except:
+        #cl = Client()
+        cl.login(sensitive_data.instagram_user, sensitive_data.instagram_pass)
+        cl.dump_settings("session.json")
+        session = cl.load_settings("session.json")
 
     login_via_session = False
     login_via_pw = False
