@@ -1,7 +1,7 @@
 from imap_tools import MailBox, AND
 import os
-#from random import randint
-#from time import sleep
+from random import randint
+from time import sleep
 
 import sensitive_data
 import get_instagram_user
@@ -41,3 +41,5 @@ def readMail(client):
             instagram_user = get_instagram_user.main(mail.subject.lower())
             pypost.main(instagram_user, mail.text, client)
             myMailBox.delete(myMailBox.uids(AND(seen=True)))
+            print(f"Foto de {instagram_user} postada com sucesso")
+            sleep(randint(5,60))
